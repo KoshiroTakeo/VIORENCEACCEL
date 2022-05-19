@@ -43,9 +43,9 @@ namespace StandardAction
         // 入力設定
         void InputSetting()
         {
-            move = GetComponent<PlayerInput>().currentActionMap["Move"];
-            attack = GetComponent<PlayerInput>().currentActionMap["Attack"];
-            jump = GetComponent<PlayerInput>().currentActionMap["Jump"];
+            //move = GetComponent<PlayerInput>().currentActionMap["Move"];
+            //attack = GetComponent<PlayerInput>().currentActionMap["Attack"];
+            //jump = GetComponent<PlayerInput>().currentActionMap["Jump"];
         }
 
 

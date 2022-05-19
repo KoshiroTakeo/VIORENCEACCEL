@@ -15,7 +15,7 @@ public class CameraTPS : MonoBehaviour
 
     private void Start()
     {
-        mouseValue = player.GetComponent<PlayerInput>().currentActionMap["Mouse"];
+        //mouseValue = player.GetComponent<PlayerInput>().currentActionMap["Mouse"];
     }
 
     private void FixedUpdate()

@@ -18,9 +18,9 @@ namespace StandardAction
         {
             
             float lastDist = Mathf.Infinity;                                                          //最初は距離を無限とする(すべてのチェックポイントを探知するため)
-            for (int i = 0; i < GameEnvironment.Singleton.Checkpoints.Count; i++)                     //チェックポイントの数だけ周る
+            for (int i = 0; i < EnemyWayPoint.Singleton.Checkpoints.Count; i++)                     //チェックポイントの数だけ周る
             {
-                GameObject thisWP = GameEnvironment.Singleton.Checkpoints[i];                         //目的地を読み込む
+                GameObject thisWP = EnemyWayPoint.Singleton.Checkpoints[i];                         //目的地を読み込む
                 
                 float distance = Vector3.Distance(npc.transform.position, thisWP.transform.position); //目的地と自身の距離
                 if (distance < lastDist)                                                              //たどり着いてなければ行う

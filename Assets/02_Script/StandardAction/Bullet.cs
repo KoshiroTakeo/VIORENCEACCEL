@@ -1,39 +1,26 @@
-﻿using System.Collections;
+﻿//======================================================================
+// Bullet.cs
+//======================================================================
+// 開発履歴
+//
+// 2022/03/15 author：ダメージを食らうように
+// 
+//
+//======================================================================
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace StandardAction
+
+public class Bullet : MonoBehaviour
 {
-    public class Bullet : MonoBehaviour
+    [SerializeField] GameObject Effect = null;
+    
+    private void OnCollisionEnter(Collision collision)
     {
-        Character character;
-
-        private int bulletAtk;
-        private string bulletHolder;
-
-
-
-
-        public void BulletStatus(int atk, string tagName)
-        {
-            bulletAtk = atk;
-            bulletHolder = tagName;
-        }
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            
-            if(collision.gameObject.tag == "Enemy")
-            {
-                character = collision.gameObject.GetComponent<Character>();
-                character.IsDamage(bulletAtk);
-
-                Destroy(this.gameObject);
-            }
-            else 
-            {
-                Destroy(this.gameObject);
-            }
-        }
+        GameObject effect = Instantiate(Effect);
+        Destroy(this.gameObject);
+        Destroy(effect, 1);
     }
 }
+

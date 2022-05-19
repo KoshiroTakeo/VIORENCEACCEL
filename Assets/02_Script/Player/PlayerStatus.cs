@@ -1,34 +1,51 @@
+//============================================================
+// PlayerStatus.cs
+//======================================================================
+// 開発履歴
+//
+// 
+// 
+//
+//======================================================================
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//***********************************************
-// プレイヤーのステータス、ゲームオブジェクト情報
-//***********************************************
+
 
 public class PlayerStatus : MonoBehaviour
 {
-
-    protected GameObject playerObject; 
-    protected GameObject headAnchor;                                                   // 頭のトラッキング
-    protected GameObject playerLeftArmAnchor, playerRightArmAnchor;                    // 両手のトラッキング
+    [SerializeField] protected PlayerData PlayerData;
+    protected GameObject PlayerObject; 
+    protected GameObject HeadAnchor;                                                   // 頭のトラッキング
+    protected GameObject PlayerLeftArmAnchor, PlayerRightArmAnchor;                    // 両手のトラッキング
     protected GameObject L_FirstWeapon, L_SecondWeapon, R_FirstWeapon, R_SecondWeapon; // 装備された武器
     
 
     [Header("ステータス")]
-    public int life = 10;
-    public int attack = 10;
-    public int defence = 10;
-    public float speed = 10;
+    public int nLife = 10;
+    public int nAttack = 10;
+    public int nDefence = 10;
+    public float fSpeed = 10;
+    public float fHeight = 3.0f;
+
+    [Header("状態")]
+    protected bool bDead = false;
+
+    
 
     private void Awake()
     {
-        playerObject = this.gameObject;
-        headAnchor = playerObject.transform.Find("OVRCameraRig/TrackingSpace/CenterEyeAnchor").gameObject;
-        playerLeftArmAnchor = playerObject.transform.Find("OVRCameraRig/TrackingSpace/LeftHandAnchor/LeftControllerAnchor").gameObject;
-        playerRightArmAnchor = playerObject.transform.Find("OVRCameraRig/TrackingSpace/RightHandAnchor/RightControllerAnchor").gameObject;
+        PlayerObject = this.gameObject;      
+        HeadAnchor = PlayerObject.transform.Find("OVRCameraRig/TrackingSpace/CenterEyeAnchor").gameObject;
+        PlayerLeftArmAnchor = PlayerObject.transform.Find("OVRCameraRig/TrackingSpace/LeftHandAnchor/LeftControllerAnchor").gameObject;
+        PlayerRightArmAnchor = PlayerObject.transform.Find("OVRCameraRig/TrackingSpace/RightHandAnchor/RightControllerAnchor").gameObject;
+
+        nLife = PlayerData.nLife;
+        nAttack = PlayerData.nAttack;
+        nDefence = PlayerData.nDefence;
+        fSpeed = PlayerData.fSpeed;
         
-      
     }
 
     

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6bcb341ab2a514588fc33491c4c40e, type: 3}
+  m_Name: SoundData
+  m_EditorClassIdentifier: 
+  PlayerSoundList:
+  - {fileID: 8300000, guid: 1615a43f9825c804b8e16d04d0c5a383, type: 3}
+  - {fileID: 8300000, guid: 53dc36509230b434a90c286e18bcf2ab, type: 3}
+  EnemySoundList:
+  - {fileID: 8300000, guid: 9dc7bf53fdddcb044ac92618f339ad85, type: 3}
+  - {fileID: 8300000, guid: d265b8be4d5938c4c9f9de47ca8ac478, type: 3}
+  SystemSoundList: []
+  StageBGMSoundList:
+  - {fileID: 8300000, guid: 2744124c355bc9c4fa63ed6be9f813d0, type: 3}
+  - {fileID: 8300000, guid: 2744124c355bc9c4fa63ed6be9f813d0, type: 3}
+  BossBGMSoundList: []
+  EnvSoundList:
+  - {fileID: 8300000, guid: 7bf382e3747080841a694b5a607657dd, type: 3}

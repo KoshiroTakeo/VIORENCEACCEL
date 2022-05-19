@@ -1,8 +1,18 @@
+//============================================================
+// MoveManager.cs
+//======================================================================
+// 開発履歴
+//
+// 
+// 
+//
+//======================================================================
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveManager : PlayerStatus
+public class MoveManager : MonoBehaviour
 {
     private CharacterController character;
     private Vector3 InitirizePos; // 正面リセット機能すると原点位置がリセットされる
@@ -13,33 +23,40 @@ public class MoveManager : PlayerStatus
     private float gravity = -9.81f;
     private float fallingSpeed;
 
+
+
     public LayerMask groundLayer;
     public float braekpower;
-   
+    private float fHighPower = 10;
+
+
+    public OVRCameraRig rig;
+    public float additionalHeight = 0.2f;
+
 
 
 
     private void Start()
     {
-        
         character = GetComponent<CharacterController>();
-        
     }
 
-    private void Update()
+    
+    // プレイヤー移動 =========================================================
+    public void HeadInclinationMove(GameObject anchor, float speed, Vector3 setPos)
     {
-        Gravity();
+        Vector3 vector = anchor.transform.position - setPos; // 常に今いる位置を原点とする
 
-        HeadInclinationMove();
-    }
+        // 最高速度
+        float fAnchorX = vector.x;
+        if (fAnchorX > 2) fAnchorX = 2;
 
+        float fAnchorZ = vector.z;
+        if (fAnchorZ > 2) fAnchorZ = 2;
 
-    // プレイヤー移動
-    void HeadInclinationMove()
-    {
-        // HMDのアンカーから移動量を取得
-        Vector3 direction = new Vector3(headAnchor.transform.localPosition.x , 0, headAnchor.transform.localPosition.z );
-        //Debug.Log("アンカーポイント：" + direction);
+        // anchorから渡される、HMDのアンカーから移動量を取得
+        Vector3 direction = new Vector3(fAnchorX, 0, fAnchorZ);
+        //direction = transform.TransformDirection(direction); // ローカル座標からワールド座標へ
 
         moveDirection.y += Physics.gravity.y * Time.deltaTime;
 
@@ -48,7 +65,7 @@ public class MoveManager : PlayerStatus
             if (OVRInput.Get(OVRInput.RawButton.RHandTrigger) && OVRInput.Get(OVRInput.RawButton.LHandTrigger))
             {               
                 //急ブレーキ
-                braketime += Time.fixedDeltaTime * braekpower * 10;
+                braketime += Time.fixedDeltaTime * braekpower * fHighPower;
             }
             else
             {
@@ -66,8 +83,10 @@ public class MoveManager : PlayerStatus
 
         
     }
+    //=========================================================================
 
-    void Gravity()
+    // 重力 ===================================================================
+    public void Gravity()
     {
         bool isGrounded = CheckIfGround();
         if (isGrounded)
@@ -81,7 +100,9 @@ public class MoveManager : PlayerStatus
 
         character.Move(Vector3.up * fallingSpeed * Time.fixedDeltaTime);
     }
+    //=========================================================================
 
+    // 接地判定 ===============================================================
     bool CheckIfGround()
     {
         Vector3 rayStart = transform.TransformPoint(character.center);
@@ -90,6 +111,16 @@ public class MoveManager : PlayerStatus
 
         return hasHit;
     }
+    //=========================================================================
 
-    
+    // かがんだ時にコライダーを変形させる =====================================
+    public void CapsuleFollowHeadset()
+    {
+        character.height = rig.centerEyeAnchor.position.y / 2 + additionalHeight;
+        //Vector3 capsuleCenter = transform.InverseTransformPoint(rig.centerEyeAnchor.transform.position);
+        character.center = new Vector3(character.center.x, character.height / 2 + character.skinWidth, character.center.z);
+    }
+    //=========================================================================
+
+    //cameraInRigSpaceHeight
 }

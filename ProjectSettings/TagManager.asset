@@ -8,6 +8,13 @@ TagManager:
   - Checkpoint
   - Safe
   - Sword
+  - BeDamage
+  - EnemyAttack
+  - Enemy
+  - PlayerAttack
+  - Bullet
+  - MoveAnchor
+  - SoundManager
   layers:
   - Default
   - TransparentFX

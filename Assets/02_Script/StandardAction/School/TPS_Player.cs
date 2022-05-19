@@ -46,10 +46,10 @@ public class TPS_Player : MonoBehaviour
 
     void InputSetting()
     {
-        move = GetComponent<PlayerInput>().currentActionMap["Move"];
-        attack = GetComponent<PlayerInput>().currentActionMap["Attack"];
-        jump = GetComponent<PlayerInput>().currentActionMap["Jump"];
-        mouse = GetComponent<PlayerInput>().currentActionMap["Mouse"];
+        //move = GetComponent<PlayerInput>().currentActionMap["Move"];
+        //attack = GetComponent<PlayerInput>().currentActionMap["Attack"];
+        //jump = GetComponent<PlayerInput>().currentActionMap["Jump"];
+        //mouse = GetComponent<PlayerInput>().currentActionMap["Mouse"];
     }
 
 

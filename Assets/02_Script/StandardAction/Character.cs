@@ -101,7 +101,7 @@ namespace StandardAction
                 GameObject newBullet = Instantiate(bullet, mazule.transform.position, transform.rotation);
                 Vector3 direction = mazule.transform.forward;
                 newBullet.GetComponent<Rigidbody>().AddForce(direction * bulletSpeed, ForceMode.Impulse);
-                newBullet.GetComponent<Bullet>().BulletStatus(atk, tagName);
+                //newBullet.GetComponent<Bullet>().BulletStatus(atk, tagName);
                 newBullet.name = bullet.name;
 
                 Destroy(newBullet, bulletDeleatTime);

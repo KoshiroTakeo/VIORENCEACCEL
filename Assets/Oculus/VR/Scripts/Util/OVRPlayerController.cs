@@ -159,6 +159,9 @@ public class OVRPlayerController : MonoBehaviour
 	private bool ReadyToSnapTurn; // Set to true when a snap turn has occurred, code requires one frame of centered thumbstick to enable another snap turn.
 	private bool playerControllerEnabled = false;
 
+	// ’Ç‰Á
+	public Vector3 fAddEular;
+
 	void Start()
 	{
 		// Add eye-depth as a camera offset from the player controller
@@ -488,6 +491,9 @@ public class OVRPlayerController : MonoBehaviour
 			{
 				transform.RotateAround(CameraRig.centerEyeAnchor.position, Vector3.up, euler.y);
 			}
+
+			// ’Ç‰Á
+			fAddEular += euler;
 		}
 	}
 

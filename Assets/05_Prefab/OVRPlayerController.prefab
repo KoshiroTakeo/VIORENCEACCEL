@@ -306,8 +306,8 @@ GameObject:
   - component: {fileID: 4117166808134323944}
   - component: {fileID: 4117166808134523562}
   - component: {fileID: 4117166808134492148}
-  - component: {fileID: 4117166807417057073}
   - component: {fileID: 4117166807417057072}
+  - component: {fileID: 4117166807417057073}
   - component: {fileID: 4117166807417057081}
   m_Layer: 0
   m_Name: OVRPlayerController
@@ -406,6 +406,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71d1996d67004241a3b69960856ffcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4117166807417057072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4117166808124652298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee5030e939238834f87c74637db2f8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weapon: {fileID: 0}
 --- !u!114 &4117166807417057073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,18 +439,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   braekpower: 1
---- !u!114 &4117166807417057072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4117166808124652298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee5030e939238834f87c74637db2f8ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4117166807417057081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,6 +455,8 @@ MonoBehaviour:
   attack: 10
   defence: 10
   speed: 10
+  sound1: {fileID: 0}
+  sound2: {fileID: 0}
   FirstWeapon_L: {fileID: 0}
   SecondWeapon_L: {fileID: 5504516394384784988}
   FirstWeapon_R: {fileID: 0}

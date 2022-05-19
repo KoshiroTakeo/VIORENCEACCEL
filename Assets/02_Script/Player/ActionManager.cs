@@ -1,13 +1,19 @@
+//============================================================
+// ActionManager.cs
+//======================================================================
+// 開発履歴
+//
+// 2022/03/15 author：ダメージを食らうように、きれいにしたいね
+// 
+//
+//======================================================================
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionManager : PlayerStatus
+public class ActionManager : MonoBehaviour
 {
-    
     public GameObject FirstWeapon_L, SecondWeapon_L, FirstWeapon_R, SecondWeapon_R;
-
-
     private bool switch_R, switch_L;
 
     private void Start()
@@ -22,6 +28,12 @@ public class ActionManager : PlayerStatus
 
         LeftChangeWepon();
         RightChangeWepon();
+
+    }
+
+    private void Update()
+    {
+        
     }
 
     // 各武器の固有アクショントリガー***********
@@ -29,12 +41,10 @@ public class ActionManager : PlayerStatus
     {
         if (switch_L)
         {
-
             FirstWeapon_L.GetComponent<GunWeapon>().Fire();
         }
         else
         {
-
             SecondWeapon_L.GetComponent<GunWeapon>().Fire();
         }
     }
@@ -43,12 +53,10 @@ public class ActionManager : PlayerStatus
     {
         if (switch_R)
         {
-
             FirstWeapon_R.GetComponent<GunWeapon>().Fire();
         }
         else
         {
-
             SecondWeapon_R.GetComponent<GunWeapon>().Fire();
         }
     }
@@ -57,7 +65,7 @@ public class ActionManager : PlayerStatus
     // 武器換装 ***********************************
     public void LeftChangeWepon()
     {
-        Debug.Log("Left_WepaonChange");
+        //Debug.Log("Left_WepaonChange");
         switch_L = !switch_L;
 
         FirstWeapon_L.SetActive(switch_L);
@@ -66,7 +74,7 @@ public class ActionManager : PlayerStatus
 
     public void RightChangeWepon()
     {
-        Debug.Log("Right_WepaonChange");
+        //Debug.Log("Right_WepaonChange");
         switch_R = !switch_R;
 
         FirstWeapon_R.SetActive(switch_R);
@@ -74,5 +82,5 @@ public class ActionManager : PlayerStatus
     }
     //**********************************************
 
-
+    
 }
