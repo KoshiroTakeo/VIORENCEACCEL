@@ -113,9 +113,10 @@ public class MoveManager : MonoBehaviour
     }
     //=========================================================================
 
-    // かがんだ時にコライダーを変形させる =====================================
+    // 頭の位置によりコライダーを変形させる =====================================
     public void CapsuleFollowHeadset()
     {
+        //Debug.Log(additionalHeight);
         character.height = rig.centerEyeAnchor.position.y / 2 + additionalHeight;
         //Vector3 capsuleCenter = transform.InverseTransformPoint(rig.centerEyeAnchor.transform.position);
         character.center = new Vector3(character.center.x, character.height / 2 + character.skinWidth, character.center.z);

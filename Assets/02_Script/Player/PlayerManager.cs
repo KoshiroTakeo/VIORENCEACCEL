@@ -33,18 +33,7 @@ public class PlayerManager : PlayerStatus
 
     private void Start()
     {
-
-        rightController = OVRInput.Controller.RTouch;
-        leftController = OVRInput.Controller.LTouch;
-
-        ActionManager = this.gameObject.GetComponent<ActionManager>();
-        MoveManager = this.gameObject.GetComponent<MoveManager>();
-        PlayerController = this.gameObject.GetComponent<OVRPlayerController>();
-        fSetAcceleration = PlayerController.Acceleration;
-        fSetRotationAmount = PlayerController.RotationAmount;
-
-        AnchorObj = GameObject.FindWithTag("MoveAnchor");
-        
+        InitPlayerManager();
     }
 
     private void Update()
@@ -156,5 +145,29 @@ public class PlayerManager : PlayerStatus
     }
     //===================================================================================
 
-   
+   // 初期化処理 ========================================================================
+   void InitPlayerManager()
+    {
+        
+        ActionManager = this.gameObject.GetComponent<ActionManager>();
+        if(ActionManager == null) Debug.Log("「ActionManager.cs」をこのオブジェクトに設定してください");
+        
+        MoveManager = this.gameObject.GetComponent<MoveManager>();
+        if (MoveManager == null) Debug.Log("「MoveManager.cs」をこのオブジェクトに設定してください");
+
+        PlayerController = this.gameObject.GetComponent<OVRPlayerController>();
+        if (MoveManager == null) Debug.Log("「PlayerController.cs」をこのオブジェクトに設定してください");
+        
+        rightController = OVRInput.Controller.RTouch;
+        leftController = OVRInput.Controller.LTouch;
+
+        fSetAcceleration = PlayerController.Acceleration;
+        fSetRotationAmount = PlayerController.RotationAmount;
+
+        AnchorObj = new GameObject("AnchorObject");
+        MoveAnchor moveAnchor = AnchorObj.AddComponent<MoveAnchor>();
+        moveAnchor.centereye = this.gameObject.transform.Find("OVRCameraRig/TrackingSpace/CenterEyeAnchor").gameObject;
+        moveAnchor.PlayerObj = this.gameObject;
+    }
+    //===================================================================================
 }

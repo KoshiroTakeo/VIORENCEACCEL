@@ -27,7 +27,7 @@ public class PlayerStatus : MonoBehaviour
     public int nAttack = 10;
     public int nDefence = 10;
     public float fSpeed = 10;
-    public float fHeight = 3.0f;
+    //public float fHeight = 1.8f; //プレイヤーの身長を設定
 
     [Header("状態")]
     protected bool bDead = false;
