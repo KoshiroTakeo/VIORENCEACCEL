@@ -22,6 +22,20 @@
 ・Player、アンカーオブジェクトの自動生成 ok
 ・Playerのコライダー可変→できてる、アンカーが固定されるのでもうその位置でいいや＝（キャラクターモデルに影響予定）
 
+20220530
+・敵の攻撃モーション追加（斧）
+・追加による行動遷移増加
+・VRRigモデルも自身目線不可視化
+・CharacerController調整
+・SoundManager呼び出し機構
+
+20220602
+・interface機能でダメージ渡し　https://qiita.com/Nekomasu/items/fe175fbb2cd4282a0e1c
+・abstract（インスタンス不可）で敵キャラ作り　https://xr-hub.com/archives/19842　
+
 参考トピック
 https://kurokumasoft.com/2022/01/05/unity-script-optimization/ 処理を軽くする工夫
 https://www.youtube.com/watch?v=Htl7ysv10Qs&t=761s アニメーションリギングの動画、頭の位置から姿勢を決める
+https://mikumikuplay.com/it/how_to_become_unity_engineer/ Unityエンジニアになる為、とかスマホのサーバなど
+https://www.mixamo.com/#/?page=1&query=Walk アニメーションサンプル
+https://qiita.com/toRisouP/items/5b7814fda00cab120e39　プロの即興コード

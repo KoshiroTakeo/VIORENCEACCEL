@@ -33,6 +33,7 @@ public class MoveManager : MonoBehaviour
     public OVRCameraRig rig;
     public float additionalHeight = 0.2f;
 
+    public float fAccelCircleSize = 0.05f;
 
 
 
@@ -46,6 +47,8 @@ public class MoveManager : MonoBehaviour
     public void HeadInclinationMove(GameObject anchor, float speed, Vector3 setPos)
     {
         Vector3 vector = anchor.transform.position - setPos; // 常に今いる位置を原点とする
+        Vector3 direction = new Vector3();
+        bool bBreak = true;
 
         // 最高速度
         float fAnchorX = vector.x;
@@ -54,34 +57,57 @@ public class MoveManager : MonoBehaviour
         float fAnchorZ = vector.z;
         if (fAnchorZ > 2) fAnchorZ = 2;
 
-        // anchorから渡される、HMDのアンカーから移動量を取得
-        Vector3 direction = new Vector3(fAnchorX, 0, fAnchorZ);
+
+        // 停止範囲外から出たとき走り出す
+        if ((fAnchorZ > fAccelCircleSize || -fAccelCircleSize > fAnchorZ))
+        {
+            direction.z = fAnchorZ / fAccelCircleSize;
+            bBreak = true;
+        }
+
+        if ((fAnchorX > fAccelCircleSize || -fAccelCircleSize > fAnchorX))
+        {
+            direction.x = fAnchorX / fAccelCircleSize;
+            bBreak = true;
+        }
+
         //direction = transform.TransformDirection(direction); // ローカル座標からワールド座標へ
 
         moveDirection.y += Physics.gravity.y * Time.deltaTime;
 
-        if (OVRInput.Get(OVRInput.RawButton.RHandTrigger) || OVRInput.Get(OVRInput.RawButton.LHandTrigger))
+        if(!bBreak)
         {
-            if (OVRInput.Get(OVRInput.RawButton.RHandTrigger) && OVRInput.Get(OVRInput.RawButton.LHandTrigger))
-            {               
-                //急ブレーキ
-                braketime += Time.fixedDeltaTime * braekpower * fHighPower;
-            }
-            else
-            {
-                //ブレーキ
-                braketime += Time.fixedDeltaTime * braekpower;
-            }
-
-            character.Move(direction * Time.fixedDeltaTime * (speed / braketime));
+            character.Move(direction * Time.fixedDeltaTime * speed);
         }
         else
         {
-            braketime = 1;
-            character.Move(direction * Time.fixedDeltaTime * speed);
+            Debug.Log("ブレーキ");
+            character.Move(direction * Time.fixedDeltaTime * (speed / braketime));
         }
-
         
+
+        //if (OVRInput.Get(OVRInput.RawButton.RHandTrigger) || OVRInput.Get(OVRInput.RawButton.LHandTrigger))
+        //{
+        //    if (OVRInput.Get(OVRInput.RawButton.RHandTrigger) && OVRInput.Get(OVRInput.RawButton.LHandTrigger))
+        //    {               
+        //        //急ブレーキ
+        //        braketime += Time.fixedDeltaTime * braekpower * fHighPower;
+        //    }
+        //    else
+        //    {
+        //        //ブレーキ
+        //        braketime += Time.fixedDeltaTime * braekpower;
+        //    }
+
+        //    character.Move(direction * Time.fixedDeltaTime * (speed / braketime));
+        //}
+        //else
+        //{
+        //    braketime = 1;
+        //    character.Move(direction * Time.fixedDeltaTime * (speed));
+        //}
+
+
     }
     //=========================================================================
 

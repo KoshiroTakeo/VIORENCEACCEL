@@ -15,4 +15,4 @@ MonoBehaviour:
   nLife: 500
   nAttack: 10
   nDefence: 10
-  fSpeed: 200
+  fSpeed: 10

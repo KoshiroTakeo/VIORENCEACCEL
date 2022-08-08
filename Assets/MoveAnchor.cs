@@ -13,9 +13,15 @@ using UnityEngine;
 
 public class MoveAnchor : MonoBehaviour
 {
-    public GameObject centereye; // カメラ座標取得
+    public GameObject Centereye; // カメラ座標取得
     public GameObject PlayerObj; // プレイヤー自体
 
+
+    public MoveAnchor(GameObject _centereye, GameObject _player)
+    {
+        Centereye = _centereye;
+        PlayerObj = _player;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +33,7 @@ public class MoveAnchor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = new Vector3(centereye.transform.localPosition.x,30, centereye.transform.localPosition.z);
+        this.transform.position = new Vector3(Centereye.transform.localPosition.x,30, Centereye.transform.localPosition.z);
         this.transform.rotation = PlayerObj.transform.rotation;
     }
 }

@@ -21,7 +21,7 @@ public class PlayerManager : PlayerStatus
     OVRPlayerController PlayerController;
     ActionManager ActionManager = null;
     MoveManager MoveManager = null;
-    [SerializeField] SoundManager SoundManager = null;
+    //public SoundManager SoundManager;
     [SerializeField] GameObject AnchorObj = null;
 
     Vector3 InitirizeAnchorPos = new Vector3();
@@ -125,7 +125,7 @@ public class PlayerManager : PlayerStatus
     void IsDamage()
     {
         //音を鳴らす
-        SoundManager.Play_PlayerDamage(PlayerObject);
+        //SoundManager.Play_PlayerDamage(PlayerObject);
 
         //ダメージは1～100の中でランダムに決める。
         int damage = Random.Range(1, 3);
@@ -156,7 +156,7 @@ public class PlayerManager : PlayerStatus
         if (MoveManager == null) Debug.Log("「MoveManager.cs」をこのオブジェクトに設定してください");
 
         PlayerController = this.gameObject.GetComponent<OVRPlayerController>();
-        if (MoveManager == null) Debug.Log("「PlayerController.cs」をこのオブジェクトに設定してください");
+        if (PlayerController == null) Debug.Log("「PlayerController.cs」をこのオブジェクトに設定してください");
         
         rightController = OVRInput.Controller.RTouch;
         leftController = OVRInput.Controller.LTouch;
@@ -166,8 +166,10 @@ public class PlayerManager : PlayerStatus
 
         AnchorObj = new GameObject("AnchorObject");
         MoveAnchor moveAnchor = AnchorObj.AddComponent<MoveAnchor>();
-        moveAnchor.centereye = this.gameObject.transform.Find("OVRCameraRig/TrackingSpace/CenterEyeAnchor").gameObject;
+        moveAnchor.Centereye = this.gameObject.transform.Find("OVRCameraRig/TrackingSpace/CenterEyeAnchor").gameObject;
         moveAnchor.PlayerObj = this.gameObject;
+
+        
     }
     //===================================================================================
 }

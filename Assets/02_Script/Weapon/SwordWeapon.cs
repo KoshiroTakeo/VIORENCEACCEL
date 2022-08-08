@@ -71,11 +71,17 @@ public class SwordWeapon : MonoBehaviour
 	{
 
 		if (collider.gameObject.tag == "Enemy")
-		{
-			Debug.Log("éaÇ¡ÇΩ");
+		{ 
+			Damage(collider.gameObject.GetComponent<EnemyManager>());
 			StartCoroutine(VibrateForSeconds(0.2f, 0.8f, 0.8f, Controller));
 		}
 
+	}
+
+	void Damage(IDamageble<float> damageble)
+	{
+		Debug.Log("É_ÉÅÅ[ÉWî≠ê∂");
+		damageble.AddDamage(10);
 	}
 
 	//-------------------------------------------------

@@ -16,11 +16,22 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] GameObject Effect = null;
     
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        GameObject effect = Instantiate(Effect);
+        if(collider.gameObject.CompareTag("Enemy"))
+        {
+            Damage(collider.gameObject.GetComponent<EnemyManager>());            
+        }
+        
         Destroy(this.gameObject);
-        Destroy(effect, 1);
+        
     }
+
+    void Damage(IDamageble<float> damageble)
+    {
+        Debug.Log("ダメージ発生");
+        damageble.AddDamage(10);
+    }
+
 }
 

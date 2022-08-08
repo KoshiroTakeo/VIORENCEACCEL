@@ -35,6 +35,8 @@ public class EnemyData : ScriptableObject
     public float Atk_Interbal = 5.0f;             //UŒ‚ŠÔŠu
     [Header("UŒ‚Šp“xC³‘¬“x")]
     public float Atk_Rotation = 5.0f;             //UŒ‚Šp“xC³‘¬“x
+    [Header("‘Ò‹@ó‘Ô‚Ö–ß‚é•p“x")]
+    public int BreakFrequency = 1000;             //UŒ‚Šp“xC³‘¬“x
 
     public enum EnemyType
     {

@@ -13,7 +13,7 @@ using UnityEngine;
 
 public class EnemyStatus : MonoBehaviour
 {
-    [SerializeField] protected EnemyData EnemyData = null;
+    [SerializeField] public EnemyData EnemyData = null;
     protected GameObject EnemyObject = null;
 
     [Header("ƒXƒe[ƒ^ƒX")]
@@ -31,6 +31,7 @@ public class EnemyStatus : MonoBehaviour
     public float behideDist { get; set; } = 10.0f;             //”wŒãŠp“x
     public float Atk_Interbal { get; set; } = 5.0f;             //UŒ‚ŠÔŠu
     public float Atk_Rotation { get; set; } = 5.0f;             //UŒ‚Šp“xC³‘¬“x
+    public int BreakFrequency { get; set; } = 1000;                   //‘Ò‹@ó‘Ô‚Ö–ß‚é•p“x
 
 
 
@@ -53,7 +54,7 @@ public class EnemyStatus : MonoBehaviour
         behideDist = EnemyData.behideDist;
         Atk_Interbal = EnemyData.Atk_Interbal;
         Atk_Rotation = EnemyData.Atk_Rotation;
-
+        BreakFrequency = EnemyData.BreakFrequency;
 
 
         
