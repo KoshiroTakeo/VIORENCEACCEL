@@ -10,13 +10,14 @@ namespace VR.Players
 {
     public class MasterPlayer : MonoBehaviour
     {
-        // 必要コンポーネント
+        // 必要コンポーネント（Unity依存）
         CharacterController PlayerCharacter;
         GameObject AnchorObject;
         [SerializeField]
         GameObject CenterEyeAnchor;
         Vector3 InitirizeAnchorPos = new Vector3();
 
+        // 必要クラス（自制作）
         // Playerのパラメータデータ
         [SerializeField] PlayerData Data;
         PlayerParameter Parameter;
