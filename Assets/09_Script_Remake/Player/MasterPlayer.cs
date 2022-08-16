@@ -17,6 +17,7 @@ namespace VR.Players
         GameObject CenterEyeAnchor;
         Vector3 InitirizeAnchorPos = new Vector3();
 
+
         // 必要クラス（自制作）
         // Playerのパラメータデータ
         [SerializeField] PlayerData Data;
@@ -48,6 +49,8 @@ namespace VR.Players
             Parameter = new PlayerParameter(Data);
             NormalMove = new StickMover();
             HoverMove = new HoverMover();
+
+            
         }
 
         private void Update()
@@ -57,7 +60,7 @@ namespace VR.Players
                 InitirizeAnchorPos = AnchorObject.transform.position;
             }
 
-            HoverMove.HeadInclinationMove(PlayerCharacter, AnchorObject.transform.position, InitirizeAnchorPos,Parameter.fSpeed);
+            HoverMove.HeadInclinationMove(this.gameObject ,PlayerCharacter, AnchorObject.transform.position, InitirizeAnchorPos,Parameter.fSpeed);
         }
     }
 }
