@@ -18,14 +18,12 @@ namespace VR.Players
 
         float fnowspeed;
 
+        DrawCircle AccelCircle;
+
         public void HeadInclinationMove(GameObject _parent, CharacterController _character ,Vector3 _anchor, Vector3 _initirizepos, float _speed)
         {
             Vector3 setDirection = new Vector3(_anchor.x - _initirizepos.x, 0, _anchor.z - _initirizepos.z);
             float fsetSpeed = _speed - fRadius;
-
-            
-
-
 
             // ’â~”ÍˆÍŠO‚Éo‚½‚Æ‚«‘–‚èo‚·
             if (Calcurate(setDirection.x, setDirection.z) > fRadius)
@@ -50,9 +48,15 @@ namespace VR.Players
                 
             }
 
-            // ‰~•`‰æ
-            DrawCircle.SetCircle(_parent ,fRadius * 10, _initirizepos, _character.velocity.magnitude);
-
+            // ‰~•`‰æ getcomponent
+            if(AccelCircle == null)
+            {
+                AccelCircle = _parent.AddComponent<DrawCircle>();
+                Debug.Log(AccelCircle);
+            }
+            
+            AccelCircle.Draw(_parent, fRadius * 10, _initirizepos, fnowspeed);
+            
         }
 
         // ”Ä—p«‚‚¢‚Í‚¸‚¾‚©‚ç•ª‚¯‚½‚¢i‚»‚Ì‚¤‚¿j
