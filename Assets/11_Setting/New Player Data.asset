@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fHP: 1000
   fAttack: 100
-  fSpeed: 100
+  fSpeed: 2
   Left_PrimaryWeapon: {fileID: 0}
   Left_SecondaryWeapon: {fileID: 0}
   Right_PrimaryWeapon: {fileID: 0}

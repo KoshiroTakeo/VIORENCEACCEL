@@ -38,6 +38,8 @@ namespace VR.Players
         {
             PlayerCharacter = GetComponent<CharacterController>();
             AnchorObject = new GameObject("AnchorObject");
+            AnchorObject.transform.position = this.gameObject.transform.position;
+            Debug.Log(AnchorObject.transform.position);
             MoveAnchor moveAnchor = new MoveAnchor(CenterEyeAnchor, this.gameObject);
             moveAnchor = AnchorObject.AddComponent<MoveAnchor>();
             moveAnchor.Centereye = CenterEyeAnchor;

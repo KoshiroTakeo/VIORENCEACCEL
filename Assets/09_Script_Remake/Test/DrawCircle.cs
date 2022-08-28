@@ -29,7 +29,7 @@ public class DrawCircle :MonoBehaviour
 
     public void Draw(GameObject _parent, float _radius, Vector3 _setpos, float _accel)
     {
-        
+        //Debug.Log(_setpos);
         CircleObj.transform.SetParent(_parent.transform);
         Render.startWidth = width;
         Render.endWidth = width;
@@ -38,6 +38,7 @@ public class DrawCircle :MonoBehaviour
         CircleObj.transform.position = _parent.transform.position;
 
         // ‰~•`‰æ
+        // ‰Û‘èFCenterEye‚ÌpositionilocalPosition‚Å‚È‚¢j‚ğæ“¾‚·‚é‚±‚Æ
         var points = new Vector3[segment];
         for (int i = 0; i < segment; i++)
         {

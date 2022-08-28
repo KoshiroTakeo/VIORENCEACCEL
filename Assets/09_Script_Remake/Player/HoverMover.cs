@@ -54,6 +54,7 @@ namespace VR.Players
                 AccelCircle = _parent.AddComponent<DrawCircle>();
                 Debug.Log(AccelCircle);
             }
+
             
             AccelCircle.Draw(_parent, fRadius * 10, _initirizepos, fnowspeed);
             

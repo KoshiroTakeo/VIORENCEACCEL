@@ -33,6 +33,7 @@ public class MoveAnchor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //localPosition‚Å‚È‚¢‚Æ–\‘–
         this.transform.position = new Vector3(Centereye.transform.localPosition.x,30, Centereye.transform.localPosition.z);
         this.transform.rotation = PlayerObj.transform.rotation;
     }
